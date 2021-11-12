@@ -14,33 +14,66 @@
       href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
     />
     <script src="script.js"></script>
+    <script type="module">
+      import { alertController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+      window.alertController = alertController;
+    </script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <ion-app>
-        <ion-header>
-          <ion-toolbar color="primary">
-            <ion-icon name="fitness-outline" slot="start"></ion-icon>
-            <ion-title>IMC - Índice de Massa Corporal</ion-title>
-          </ion-toolbar>
-        </ion-header>
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-icon name="fitness-outline" slot="start"></ion-icon>
+          <ion-title>IMC - Índice de Massa Corporal</ion-title>
+        </ion-toolbar>
+      </ion-header>
       <ion-content>
         <ion-item>
-        <ion-icon name="barbell-outline" slot="start"></ion-icon>
+          <ion-icon name="barbell-outline" slot="start"></ion-icon>
           <ion-label>Digite o peso: </ion-label>
-          <ion-input></ion-input>
+          <ion-input id="peso" type="text" name="peso" value="72.5"></ion-input>
         </ion-item>
         <ion-item>
-        <ion-icon name="man-outline" slot="start"></ion-icon>
+          <ion-icon name="man-outline" slot="start"></ion-icon>
           <ion-label>Digite a altura: </ion-label>
-          <ion-input></ion-input>
+          <ion-input
+            id="altura"
+            type="text"
+            name="altura"
+            value="1.70"
+          ></ion-input>
         </ion-item>
       </ion-content>
       <ion-footer>
         <ion-toolbar>
-          <ion-button color="success">Calcular</ion-button>
+          <ion-button color="success" expand="block">Calcular</ion-button>
         </ion-toolbar>
       </ion-footer>
     </ion-app>
+    <script>
+      const button = document.querySelector('ion-button');
+      var peso = document.getElementById(peso);
+      console.log(peso);
+      var altura = document.getElementById(peso);
+      button.addEventListener('click', handleButtonClick);
+
+      async function handleButtonClick() {
+        var peso;
+        var altura;
+        var imc;
+        peso=(parseFloat(document.getElementById("peso").value));
+        altura=(parseFloat(document.getElementById("altura").value));
+        imc=peso/(altura*altura);
+        const alert = await alertController.create({
+          header: 'IMC Calculado',
+          message:
+            'Peso: ' + peso + ', Altura: ' + altura + ', IMC: ' + imc,
+          buttons: ['Fechar'],
+        });
+
+        await alert.present();
+      }
+    </script>
   </body>
 </html>
