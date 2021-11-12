@@ -1,4 +1,4 @@
-<html>
+<html mode="ios">
   <head>
     <meta charset="UTF-8" />
     <script
@@ -25,14 +25,14 @@
       <ion-header>
         <ion-toolbar color="primary">
           <ion-icon name="fitness-outline" slot="start"></ion-icon>
-          <ion-title>IMC - Índice de Massa Corporal</ion-title>
+          <ion-title>IMC</ion-title>
         </ion-toolbar>
       </ion-header>
       <ion-content>
         <ion-item>
           <ion-icon name="barbell-outline" slot="start"></ion-icon>
           <ion-label>Digite o peso: </ion-label>
-          <ion-input id="peso" type="text" name="peso" value="72.5"></ion-input>
+          <ion-input id="peso" type="text" name="peso" value="70"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon name="man-outline" slot="start"></ion-icon>
@@ -68,7 +68,7 @@
         calculo=peso/(altura*altura);
         var imc = parseFloat(calculo.toFixed(2));
         const alert = await alertController.create({
-          header: 'IMC Calculado',
+          header: 'Índice de Massa Corporal',
           message:
             "Peso = " + peso +('<br>')+ 
             "Altura = " + altura+('<br>')+ 
